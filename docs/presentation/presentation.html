@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GlucoTwin-X Presentation Deck - Van Der Linde Gang</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #090d16;
+      color: #f1f5f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 10px 16px;
+      border-radius: 30px;
+      border: 1px solid #334155;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .btn {
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #0369a1;
+    }
+    .slide-deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding: 40px 20px;
+    }
+    .slide {
+      width: 100%;
+      max-width: 1000px;
+      aspect-ratio: 16 / 9;
+      min-height: 562px;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 44px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6);
+    }
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0284c7, #38bdf8, #10b981);
+    }
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .slide-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin: 0;
+    }
+    .slide-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 1px;
+    }
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #475569;
+      border-top: 1px solid #1e293b;
+      padding-top: 10px;
+      margin-top: 16px;
+    }
+    h3 {
+      font-size: 18px;
+      color: #e2e8f0;
+      margin: 0 0 12px 0;
+    }
+    p, li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+    ul {
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .quote-box {
+      background: rgba(2, 132, 199, 0.1);
+      border-left: 4px solid #38bdf8;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #e0f2fe;
+      margin: 16px 0;
+      font-size: 15px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #0369a1;
+      color: #ffffff;
+      margin-right: 8px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 12px;
+      border: 1px solid #334155;
+      text-align: left;
+    }
+    th {
+      background: #1e293b;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+    td {
+      background: rgba(15, 23, 42, 0.6);
+      color: #cbd5e1;
+    }
+
+    @media print {
+      body {
+        background: #0f172a !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .controls {
+        display: none;
+      }
+      .slide-deck {
+        padding: 0;
+        gap: 0;
+      }
+      .slide {
+        page-break-after: always;
+        break-after: page;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="slide-deck">
+
+    <!-- SLIDE 1 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">GLUCOTWIN-X</h2>
+        <span class="slide-num">SLIDE 01 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h1 style="font-size: 32px; color: #f8fafc; margin: 0 0 10px 0;">A Personalized Hybrid Metabolic Digital Twin for Type-2 Diabetes</h1>
+        <p style="font-size: 16px; color: #38bdf8; font-weight: 600;">Continuous Wearable Forecasting • Mechanistic Simulation • Real-Time Explainability</p>
+        
+        <div class="card" style="margin: 20px 0; background: #0b1120; border-color: #0284c7;">
+          <p style="margin: 4px 0;"><strong style="color: #38bdf8;">Team Name:</strong> Van Der Linde Gang</p>
+          <p style="margin: 4px 0;"><strong style="color: #38bdf8;">Team Members:</strong> 1. Aryan Ranadive &nbsp;|&nbsp; 2. Shubham Sukhadare</p>
+          <p style="margin: 4px 0;"><strong style="color: #38bdf8;">Target Audience:</strong> Healthcare AI Evaluators, Clinical Specialists & Biomedical Judges</p>
+        </div>
+
+        <div class="quote-box">
+          "What if a clinician could look 2 hours into a diabetic patient's future, explain why a spike is imminent, and test lifestyle interventions before they happen?"
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">THE CLINICAL PROBLEM</h2>
+        <span class="slide-num">SLIDE 02 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>The Reactive Trap in Diabetes Care</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4 style="color: #f87171; margin-top:0;">Retrospective Care Trap</h4>
+            <ul>
+              <li><strong>422M+ patients worldwide</strong> suffer from diabetes (over 90% T2D).</li>
+              <li>Traditional CGMs are <strong>reactive</strong>: alarms ring only <em>after</em> acute hyperglycemia (>180 mg/dL) is already underway.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4 style="color: #f87171; margin-top:0;">The Black-Box & Counterfactual Void</h4>
+            <ul>
+              <li>Existing AI models act as black boxes with no physiological transparency.</li>
+              <li>Clinicians cannot test: <em>"What happens if the patient eats 45g carbs now vs walks for 30 minutes?"</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">THE GLUCOTWIN-X SOLUTION</h2>
+        <span class="slide-num">SLIDE 03 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>A Multimodal, Continuously Updating Cyber-Physical Twin</h3>
+        <div class="grid-3">
+          <div class="card">
+            <h4 style="color: #38bdf8; margin-top:0;">1. Multimodal Ingestion</h4>
+            <p>Fuses static EHR demographics (Synthea) with 1-min wearable telemetry (CGMacros CGM, meals, HR, steps) across 14 T2D cohorts.</p>
+          </div>
+          <div class="card">
+            <h4 style="color: #34d399; margin-top:0;">2. Hybrid AI Architecture</h4>
+            <p>Combines machine learning (+120m XGBoost forecast) with biophysical differential equations (Bergman Minimal ODE What-If simulator).</p>
+          </div>
+          <div class="card">
+            <h4 style="color: #a855f7; margin-top:0;">3. Live 3D Visualizer</h4>
+            <p>Doctor Cockpit (React 19) + in-browser 3D WebGL Hologram + Unity 3D engine with photorealistic organs and live particle streams.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">HYBRID ARCHITECTURE</h2>
+        <span class="slide-num">SLIDE 04 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>End-to-End Multimodal Pipeline</h3>
+        <div class="card" style="text-align: center; background: #0b1120;">
+          <p style="font-family: monospace; font-size: 11px; line-height: 1.5; color: #38bdf8; margin: 0;">
+            [Synthea EHR + CGMacros 1-Min Wearables]<br>
+            ↓ (5-Min Rolling Stride & Feature Parity)<br>
+            [Digital Twin State Engine]<br>
+            ↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘<br>
+            [XGBoost 120m Predictor + TreeSHAP] &nbsp;&nbsp;&nbsp;&nbsp; [Bergman Minimal ODE What-If Lab]<br>
+            ↘ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↙<br>
+            [FastAPI Asynchronous WebSocket & REST Backend]<br>
+            ↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘<br>
+            [React Doctor Dashboard + WebGL 3D] &nbsp;&nbsp;&nbsp;&nbsp; [Unity 3D Standalone Engine]
+          </p>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">RIGOROUS ML VALIDATION</h2>
+        <span class="slide-num">SLIDE 05 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>120-Minute Glucose Excursion Forecasting (Zero Leakage)</h3>
+        <table>
+          <tr>
+            <th>Model Task</th>
+            <th>Validation Protocol</th>
+            <th>Performance</th>
+            <th>Baseline Comparison</th>
+          </tr>
+          <tr>
+            <td><strong>Regression (+120m)</strong></td>
+            <td>GroupKFold (Unseen Patients)</td>
+            <td><strong style="color:#34d399;">MAE = 29.74 mg/dL</strong>, RMSE = 40.04</td>
+            <td>Persistence: 35.02 | CGM-only: 31.55</td>
+          </tr>
+          <tr>
+            <td><strong>Temporal Stability</strong></td>
+            <td>Strict Temporal Holdout</td>
+            <td>MAE = 41.01 mg/dL</td>
+            <td>Evaluates unseen time horizons</td>
+          </tr>
+          <tr>
+            <td><strong>Risk Classifier</strong></td>
+            <td>GroupKFold (Hyperglycemia &gt;180)</td>
+            <td><strong style="color:#34d399;">AUROC = 0.916</strong>, PR-AUC = 0.902</td>
+            <td>Reactive Threshold: 0.775</td>
+          </tr>
+          <tr>
+            <td><strong>Alert Calibration</strong></td>
+            <td>Optimal Operating Point</td>
+            <td><strong style="color:#34d399;">Threshold = 0.45</strong> (F1 = 0.836)</td>
+            <td>Precision: 0.889 | Recall: 0.790</td>
+          </tr>
+        </table>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">EXPLAINABLE AI (TreeSHAP)</h2>
+        <span class="slide-num">SLIDE 06 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>Unmasking the "Why" Behind Risk Transitions</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Live Feature Attribution</h4>
+            <ul>
+              <li>Calculates exact Shapley additive values for every 5-minute prediction.</li>
+              <li>Eliminates black-box distrust by showing clinicians the primary drivers of impending spikes.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Primary Discovered Drivers</h4>
+            <ul>
+              <li><strong style="color:#f59e0b;">cgm_rolling_mean_30:</strong> Recent metabolic momentum.</li>
+              <li><strong style="color:#ef4444;">meal_carbs_window_60:</strong> Postprandial carb surge.</li>
+              <li><strong style="color:#34d399;">steps_sum_60 / hr_mean_60:</strong> Protective physical activity buffer.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">WHAT-IF SIMULATION LAB</h2>
+        <span class="slide-num">SLIDE 07 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>Mechanistic Glucose-Insulin Surrogate (Bergman Minimal ODE)</h3>
+        <div class="card" style="margin-bottom: 12px; background: #0b1120;">
+          <p style="font-family: monospace; font-size: 12px; color: #34d399; margin: 0;">
+            dG/dt = -(p1 + X)·G + p1·Gb + D(t) - E(t) &nbsp;&nbsp;|&nbsp;&nbsp; dX/dt = -p2·X + p3·(I - Ib)
+          </p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h4>RK45 Numerical Integrator</h4>
+            <p>Executed dynamically via SciPy `solve_ivp` to simulate physiological trajectories within milliseconds.</p>
+          </div>
+          <div class="card">
+            <h4>Clinical Intervention Testing</h4>
+            <p>Allows doctors to drag sliders (e.g. +40g meal vs 30 min exercise) and immediately compare alternative metabolic futures against baseline.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">3D DIGITAL TWIN & CAD</h2>
+        <span class="slide-num">SLIDE 08 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>Dual-Tiered Cyber-Physical Visualizer</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4 style="color: #a855f7;">In-Browser 3D WebGL (Three.js)</h4>
+            <ul>
+              <li>Directly inside the React Doctor Cockpit.</li>
+              <li>Holographic patient silhouette with interactive 360° orbit drag.</li>
+              <li>Pulsing Pancreas (Alert Red / Normal Green) & flowing bloodstream particles.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4 style="color: #34d399;">Unity 3D Engine & Fusion 360</h4>
+            <ul>
+              <li>Photorealistic textured PBR organ models (Stomach, Pancreas, Intestine).</li>
+              <li>Procedural CAD generation via Autodesk Fusion 360 Python API.</li>
+              <li>Auto-reconnecting live WebSocket streaming.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">LIVE DEMO WORKFLOW</h2>
+        <span class="slide-num">SLIDE 09 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>5-Minute End-to-End Walkthrough</h3>
+        <div class="grid-3">
+          <div class="card">
+            <h4>1. Patient Profile</h4>
+            <p>Select twin (<strong>DT-01</strong>: Age 59, BMI 26.95, HbA1c 6.5%). Review baseline static labs.</p>
+          </div>
+          <div class="card">
+            <h4>2. Live Replay</h4>
+            <p>Start historical streaming. Watch the 120-min forecast curve update with 90% confidence bands.</p>
+          </div>
+          <div class="card">
+            <h4>3. XAI & 3D Reaction</h4>
+            <p>On high-risk transition, SHAP reveals carb surge. 3D Twin pulses red with accelerated blood velocity.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">ETHICS & LIMITATIONS</h2>
+        <span class="slide-num">SLIDE 10 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3>Responsible Research & Translational Safeguards</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Research Prototype Framing</h4>
+            <ul>
+              <li>Built as a synthetic composite translational prototype.</li>
+              <li>Strictly framed for algorithmic research; not an FDA/CE medical device.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Future Roadmap</h4>
+            <ul>
+              <li>Clinical trial expansion across larger multi-institutional cohorts.</li>
+              <li>Integration of automated closed-loop insulin dosing algorithms.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">CONCLUSION & VALUE</h2>
+        <span class="slide-num">SLIDE 11 / 11</span>
+      </div>
+      <div class="slide-content">
+        <h3 style="color: #38bdf8;">Why GlucoTwin-X Wins:</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Key Innovations</h4>
+            <ul>
+              <li><strong>Predictive:</strong> Foresees spikes 2 hours ahead (MAE 29.74 mg/dL).</li>
+              <li><strong>Explainable:</strong> Live TreeSHAP justifies every single risk alert.</li>
+              <li><strong>Simulative:</strong> Counterfactual testing before real-world patient actions.</li>
+            </ul>
+          </div>
+          <div class="card" style="border-color: #0284c7; background: #0b1120;">
+            <h4>Submission Credentials</h4>
+            <p><strong>Team:</strong> Van Der Linde Gang</p>
+            <p><strong>Members:</strong> Aryan Ranadive, Shubham Sukhadare</p>
+            <p><strong>License:</strong> Open-Source MIT License</p>
+            <p><strong>Code Quality:</strong> 57/57 Pytest Passed | 0 TypeScript Errors</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Team: Van Der Linde Gang</span>
+        <span>GlucoTwin-X Presentation Deck</span>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

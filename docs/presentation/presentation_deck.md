@@ -5,7 +5,8 @@
 ## Slide 1: Title & Hook
 **Title**: **GlucoTwin-X: A Personalized Hybrid Metabolic Digital Twin for Type-2 Diabetes**  
 **Subtitle**: Bridging Continuous Wearable Forecasting, Mechanistic Simulation, and Real-Time Explainability  
-**Presenter**: Team GlucoTwin-X  
+**Team**: **Van Der Linde Gang**  
+**Members**: **1. Aryan Ranadive, 2. Shubham Sukhadare**  
 **Audience**: Healthcare AI Judges, Clinical Evaluators, Biomedical Engineers  
 
 > *"What if a clinician could look 2 hours into a diabetic patient's metabolic future—understand exactly why a glucose spike will happen, test hypothetical interventions before they occur, and watch the patient's physiology respond in real time?"*

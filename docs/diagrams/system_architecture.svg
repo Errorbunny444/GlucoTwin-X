@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%" style="background-color: #0b0f19; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="grad-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.4"/>
+    </linearGradient>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700" letter-spacing="1">GLUCOTWIN-X: SYSTEM ARCHITECTURE</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">Personalized Hybrid Metabolic Digital Twin • Van Der Linde Gang</text>
+
+  <!-- ==================== 1. DATA INGESTION LAYER ==================== -->
+  <rect x="50" y="95" width="1100" height="95" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5"/>
+  <text x="70" y="120" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="1">LAYER 1: MULTIMODAL CLINICAL & WEARABLE DATA INGESTION</text>
+  
+  <!-- Box: Synthea EHR -->
+  <rect x="70" y="130" width="320" height="48" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+  <text x="85" y="152" fill="#f1f5f9" font-size="13" font-weight="600">Static EHR Demographics (Synthea)</text>
+  <text x="85" y="168" fill="#94a3b8" font-size="10">Age, Gender, BMI, HbA1c, Baseline Labs, Meds</text>
+
+  <!-- Box: CGMacros Wearables -->
+  <rect x="420" y="130" width="360" height="48" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+  <text x="435" y="152" fill="#f1f5f9" font-size="13" font-weight="600">High-Density Wearable Streams (CGMacros)</text>
+  <text x="435" y="168" fill="#94a3b8" font-size="10">1-Min CGM, Macronutrient Logs, Steps, Heart Rate</text>
+
+  <!-- Box: Fusion & Alignment -->
+  <rect x="810" y="130" width="320" height="48" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1"/>
+  <text x="825" y="152" fill="#f1f5f9" font-size="13" font-weight="600">Cohort Alignment & Fusion</text>
+  <text x="825" y="168" fill="#94a3b8" font-size="10">14 T2D Composite Twins (DT-01 to DT-14)</text>
+
+  <!-- Connection: Layer 1 to Layer 2 -->
+  <path d="M 600 190 L 600 220" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- ==================== 2. DIGITAL TWIN ENGINE ==================== -->
+  <rect x="50" y="220" width="1100" height="90" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5"/>
+  <text x="70" y="245" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="1">LAYER 2: REAL-TIME DIGITAL TWIN STATE ENGINE</text>
+
+  <rect x="70" y="255" width="340" height="42" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="85" y="280" fill="#e2e8f0" font-size="12" font-weight="600">5-Minute Rolling Stride Engine</text>
+
+  <rect x="440" y="255" width="320" height="42" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="455" y="280" fill="#e2e8f0" font-size="12" font-weight="600">Online/Batch Feature Parity Buffer</text>
+
+  <rect x="790" y="255" width="340" height="42" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="805" y="280" fill="#e2e8f0" font-size="12" font-weight="600">Historical Replay & State Machine</text>
+
+  <!-- Connection: Layer 2 to Layer 3 (Split) -->
+  <path d="M 330 310 L 330 345" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 870 310 L 870 345" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)" fill="none"/>
+
+  <!-- ==================== 3. HYBRID INTELLIGENCE CORE ==================== -->
+  <rect x="50" y="345" width="1100" height="150" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5"/>
+  <text x="70" y="370" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="1">LAYER 3: HYBRID INTELLIGENCE CORE (DATA-DRIVEN ML + MECHANISTIC ODE)</text>
+
+  <!-- Sub-block: Predictive ML Twin -->
+  <rect x="70" y="380" width="510" height="100" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="90" y="405" fill="#38bdf8" font-size="13" font-weight="700">Predictive ML Twin (120-Min Forecast)</text>
+  <text x="90" y="425" fill="#cbd5e1" font-size="11">• <tspan font-weight="600">XGBoost Regressor</tspan>: GroupKFold MAE 29.74 mg/dL</text>
+  <text x="90" y="443" fill="#cbd5e1" font-size="11">• <tspan font-weight="600">High-Glucose Classifier</tspan>: AUROC 0.916, PR-AUC 0.902</text>
+  <text x="90" y="461" fill="#cbd5e1" font-size="11">• <tspan font-weight="600">Explainable AI (TreeSHAP)</tspan>: Real-time local feature attribution</text>
+
+  <!-- Sub-block: Physiological Simulation -->
+  <rect x="620" y="380" width="510" height="100" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="640" y="405" fill="#34d399" font-size="13" font-weight="700">Physiological Twin ("What-If" Simulation)</text>
+  <text x="640" y="425" fill="#cbd5e1" font-size="11">• <tspan font-weight="600">Bergman Minimal Model</tspan>: 3-State Glucose-Insulin Dynamics</text>
+  <text x="640" y="443" fill="#cbd5e1" font-size="11">• <tspan font-weight="600">Numerical Solver</tspan>: Real-time RK45 Integrator (SciPy ODE)</text>
+  <text x="640" y="461" fill="#cbd5e1" font-size="11">• <tspan font-weight="600">Counterfactual Testing</tspan>: Meal boluses & exercise interventions</text>
+
+  <!-- Connection: Layer 3 to Layer 4 -->
+  <path d="M 600 495 L 600 525" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- ==================== 4. BACKEND INTEGRATION LAYER ==================== -->
+  <rect x="50" y="525" width="1100" height="80" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5"/>
+  <text x="70" y="550" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="1">LAYER 4: FASTAPI ASYNCHRONOUS BACKEND INTEGRATION</text>
+
+  <rect x="70" y="560" width="340" height="36" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="583" fill="#e2e8f0" font-size="11" font-weight="600">REST Endpoints (/api/twins, /what-if)</text>
+
+  <rect x="440" y="560" width="320" height="36" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="460" y="583" fill="#e2e8f0" font-size="11" font-weight="600">Real-Time WebSocket (/ws/twins/{id})</text>
+
+  <rect x="790" y="560" width="340" height="36" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="810" y="583" fill="#e2e8f0" font-size="11" font-weight="600">Cross-Origin Telemetry Broker</text>
+
+  <!-- Connection: Layer 4 to Layer 5 -->
+  <path d="M 600 605 L 600 635" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- ==================== 5. APPLICATION & 3D VISUALIZATION ==================== -->
+  <rect x="50" y="635" width="1100" height="130" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5"/>
+  <text x="70" y="660" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="1">LAYER 5: CLINICIAN COCKPIT & 3D CYBER-PHYSICAL TWIN</text>
+
+  <!-- Card 1: React Dashboard -->
+  <rect x="70" y="670" width="330" height="80" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+  <text x="85" y="693" fill="#38bdf8" font-size="12" font-weight="700">React 19 Doctor Dashboard</text>
+  <text x="85" y="711" fill="#94a3b8" font-size="10">• Real-Time Continuous Glucose Stream</text>
+  <text x="85" y="726" fill="#94a3b8" font-size="10">• 120m Prediction Curves & SHAP Bars</text>
+  <text x="85" y="741" fill="#94a3b8" font-size="10">• Interactive What-If Scenario Lab</text>
+
+  <!-- Card 2: Three.js WebGL -->
+  <rect x="420" y="670" width="360" height="80" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+  <text x="435" y="693" fill="#a855f7" font-size="12" font-weight="700">In-Browser 3D Holographic Twin</text>
+  <text x="435" y="711" fill="#94a3b8" font-size="10">• Three.js WebGL Reactive Rendering</text>
+  <text x="435" y="726" fill="#94a3b8" font-size="10">• Pulsing Pancreas on High-Risk Excursions</text>
+  <text x="435" y="741" fill="#94a3b8" font-size="10">• Circulating Bloodstream Velocity Particle Loop</text>
+
+  <!-- Card 3: Unity & CAD -->
+  <rect x="800" y="670" width="330" height="80" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1"/>
+  <text x="815" y="693" fill="#34d399" font-size="12" font-weight="700">Unity 3D Engine & CAD</text>
+  <text x="815" y="711" fill="#94a3b8" font-size="10">• Photorealistic Anatomical Assets (PBR)</text>
+  <text x="815" y="726" fill="#94a3b8" font-size="10">• Procedural Autodesk Fusion 360 Generator</text>
+  <text x="815" y="741" fill="#94a3b8" font-size="10">• Synchronized C# WebSocket Subsystem</text>
+
+</svg>
