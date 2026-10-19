@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"GlucoTwin-X Integration",
+	"description":	{
+		"":	"Automated CAD generator for the GlucoTwin-X metabolic 3D assets (Pancreas, Stomach, Intestine, Bloodstream)."
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

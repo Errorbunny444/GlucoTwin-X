@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project Specific
+data/raw/synthea/*
+!data/raw/synthea/.gitkeep
+data/raw/cgmacros/*
+!data/raw/cgmacros/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Models and Data
+*.pkl
+*.model
+*.h5
+*.hdf5
+*.joblib
+*.csv
+*.xlsx
+*.json
+
+# Whitelist project configurations and trained model artifacts
+!frontend/*.json
+!frontend/tsconfig*.json
+!artifacts/models/*.json
+!artifacts/models/*.pkl
+
+# Logs
+logs/
+*.log
+
+# Unity (Future)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# MATLAB / Simulink (Future)
+*.asv
+*.slxc
+slprj/
+*.mex*
+*.mat

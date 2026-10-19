@@ -1,0 +1,36 @@
+[project]
+name = "glucotwin"
+version = "0.1.0"
+description = "A personalized Hybrid Metabolic Digital Twin for early prediction and simulation of glucose excursions in Type-2 Diabetes."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "scikit-learn>=1.2.0",
+    "xgboost>=2.0.0",
+    "shap>=0.44.0",
+    "pyarrow>=14.0.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0",
+    "websockets>=12.0",
+    "matplotlib>=3.8.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "ruff>=0.1.0",
+    "black>=23.0.0"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["glucotwin*"]

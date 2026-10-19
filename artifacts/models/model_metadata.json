@@ -1,0 +1,22 @@
+{
+    "model_type": "XGBoost",
+    "training_timestamp": "2026-10-07T10:15:03.420246",
+    "feature_set": "Full Digital Twin Fusion",
+    "number_of_training_rows": 43075,
+    "number_of_twins": 14,
+    "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 4,
+        "learning_rate": 0.05,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8
+    },
+    "forecast_horizon": "120 minutes",
+    "prediction_stride": "5 minutes",
+    "cross_validation_strategy": "5-fold GroupKFold by twin_id",
+    "metrics_summary": {
+        "Regression_MAE": 32.55168784319001,
+        "Classification_AUROC": 0.9113375217646837
+    },
+    "dataset_path": "data/processed/glucose_forecasting_dataset.parquet"
+}
